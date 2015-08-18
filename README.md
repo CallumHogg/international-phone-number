@@ -1,6 +1,8 @@
 international-phone-number
 ==========================
 
+Fork to include country and other phone number data on the updated model.
+
 AngularJS directive implementing intl-tel-input (https://github.com/Bluefieldscom/intl-tel-input) jQuery plugin.
 
 Installation
