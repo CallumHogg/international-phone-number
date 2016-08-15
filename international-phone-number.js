@@ -8,7 +8,8 @@
 				require: '^ngModel',
 				scope: {
 					ngModel: '=',
-					defaultCountry: '='
+					defaultCountry: '=',
+					countries: '='
 				},
 				link: function(scope, element, attrs, ctrl) {
 
@@ -67,7 +68,7 @@
 							defaultCountry: '',
 							nationalMode: true,
 							numberType: '',
-							onlyCountries: void 0,
+							onlyCountries: scope.countries && scope.countries.length ? scope.countries : (void 0),
 							preferredCountries: ($rootScope.defaultCountry ? [$rootScope.defaultCountry.toLowerCase()] : ['gb', 'us']),
 							responsiveDropdown: false,
 							utilsScript: ""
@@ -171,7 +172,8 @@
 							};
 						};
 						element.on('blur focus keyup change', function(event) {
-							return scope.$apply(read);
+							var escapedKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Meta', 'Backspace'];
+							if(escapedKeys.indexOf(event.key) === -1) { return scope.$apply(read); }
 						});
 						return element.on('$destroy', function() {
 							element.intlTelInput('destroy');
